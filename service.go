@@ -377,6 +377,12 @@ type ValidatorsProvider interface {
 	ValidatorsByPubKey(ctx context.Context, stateID string, validatorPubKeys []phase0.BLSPubKey) (map[phase0.ValidatorIndex]*apiv1.Validator, error)
 }
 
+type BeaconAttestationRewardsProvider interface {
+	// BeaconAttestationRewards provides the attestation rewards for the given epoch.
+	// If validatorIndices is nil it will return all rewards for the given epoch.
+	BeaconAttestationRewards(ctx context.Context, epoch phase0.Epoch, validatorIndices []phase0.ValidatorIndex) ([]*apiv1.BeaconAttestationRewards, error)
+}
+
 // VoluntaryExitSubmitter is the interface for submitting voluntary exits.
 type VoluntaryExitSubmitter interface {
 	// SubmitVoluntaryExit submits a voluntary exit.
