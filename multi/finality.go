@@ -16,8 +16,8 @@ package multi
 import (
 	"context"
 
-	consensusclient "github.com/attestantio/go-eth2-client"
-	api "github.com/attestantio/go-eth2-client/api/v1"
+	consensusclient "github.com/dbkbali/go-eth2-client"
+	api "github.com/dbkbali/go-eth2-client/api/v1"
 )
 
 // Finality provides the finality given a state ID.

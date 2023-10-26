@@ -20,13 +20,13 @@ import (
 	"math/rand"
 	"time"
 
-	consensusclient "github.com/attestantio/go-eth2-client"
-	"github.com/attestantio/go-eth2-client/api"
-	apiv1 "github.com/attestantio/go-eth2-client/api/v1"
-	"github.com/attestantio/go-eth2-client/spec"
-	"github.com/attestantio/go-eth2-client/spec/altair"
-	"github.com/attestantio/go-eth2-client/spec/deneb"
-	"github.com/attestantio/go-eth2-client/spec/phase0"
+	consensusclient "github.com/dbkbali/go-eth2-client"
+	"github.com/dbkbali/go-eth2-client/api"
+	apiv1 "github.com/dbkbali/go-eth2-client/api/v1"
+	"github.com/dbkbali/go-eth2-client/spec"
+	"github.com/dbkbali/go-eth2-client/spec/altair"
+	"github.com/dbkbali/go-eth2-client/spec/deneb"
+	"github.com/dbkbali/go-eth2-client/spec/phase0"
 )
 
 // Erroring is an Ethereum 2 client that errors at a given rate.

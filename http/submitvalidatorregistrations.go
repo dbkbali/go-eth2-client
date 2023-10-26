@@ -18,8 +18,8 @@ import (
 	"context"
 	"encoding/json"
 
-	"github.com/attestantio/go-eth2-client/api"
-	"github.com/attestantio/go-eth2-client/spec"
+	"github.com/dbkbali/go-eth2-client/api"
+	"github.com/dbkbali/go-eth2-client/spec"
 	"github.com/pkg/errors"
 )
 

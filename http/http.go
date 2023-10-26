@@ -24,7 +24,7 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/attestantio/go-eth2-client/spec"
+	"github.com/dbkbali/go-eth2-client/spec"
 	"github.com/pkg/errors"
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/codes"
@@ -184,7 +184,7 @@ type httpResponse struct {
 // get2 sends an HTTP get request and returns the body.
 // If the response from the server is a 404 this will return nil for both the reader and the error.
 func (s *Service) get2(ctx context.Context, endpoint string) (*httpResponse, error) {
-	ctx, span := otel.Tracer("attestantio.go-eth2-client.http").Start(ctx, "get2")
+	ctx, span := otel.Tracer("dbkbali.go-eth2-client.http").Start(ctx, "get2")
 	defer span.End()
 
 	// #nosec G404

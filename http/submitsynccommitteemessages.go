@@ -18,7 +18,7 @@ import (
 	"context"
 	"encoding/json"
 
-	"github.com/attestantio/go-eth2-client/spec/altair"
+	"github.com/dbkbali/go-eth2-client/spec/altair"
 	"github.com/pkg/errors"
 )
 

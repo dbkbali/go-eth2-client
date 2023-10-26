@@ -19,8 +19,8 @@ import (
 	"fmt"
 	"strings"
 
-	api "github.com/attestantio/go-eth2-client/api/v1"
-	"github.com/attestantio/go-eth2-client/spec/phase0"
+	api "github.com/dbkbali/go-eth2-client/api/v1"
+	"github.com/dbkbali/go-eth2-client/spec/phase0"
 	"github.com/pkg/errors"
 )
 
@@ -60,6 +60,7 @@ func (s *Service) BeaconAttestationRewards(ctx context.Context, requestEpoch pha
 
 	res := make(map[phase0.ValidatorIndex]*api.BeaconAttestationRewards)
 	for _, beaconAttestationReward := range beaconAttestorRewardsJSON.Data {
+		fmt.Printf("beaconAttestationReward: %+v\n", beaconAttestationReward)
 		res[beaconAttestationReward.Index] = beaconAttestationReward
 	}
 	return res, nil

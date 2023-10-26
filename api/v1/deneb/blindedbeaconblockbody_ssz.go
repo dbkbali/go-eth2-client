@@ -4,10 +4,10 @@
 package deneb
 
 import (
-	"github.com/attestantio/go-eth2-client/spec/altair"
-	"github.com/attestantio/go-eth2-client/spec/capella"
-	"github.com/attestantio/go-eth2-client/spec/deneb"
-	"github.com/attestantio/go-eth2-client/spec/phase0"
+	"github.com/dbkbali/go-eth2-client/spec/altair"
+	"github.com/dbkbali/go-eth2-client/spec/capella"
+	"github.com/dbkbali/go-eth2-client/spec/deneb"
+	"github.com/dbkbali/go-eth2-client/spec/phase0"
 	ssz "github.com/ferranbt/fastssz"
 )
 

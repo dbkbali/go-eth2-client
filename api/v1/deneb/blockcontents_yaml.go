@@ -16,7 +16,7 @@ package deneb
 import (
 	"bytes"
 
-	"github.com/attestantio/go-eth2-client/spec/deneb"
+	"github.com/dbkbali/go-eth2-client/spec/deneb"
 	"github.com/goccy/go-yaml"
 )
 

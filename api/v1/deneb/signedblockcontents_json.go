@@ -16,8 +16,8 @@ package deneb
 import (
 	"encoding/json"
 
-	"github.com/attestantio/go-eth2-client/codecs"
-	"github.com/attestantio/go-eth2-client/spec/deneb"
+	"github.com/dbkbali/go-eth2-client/codecs"
+	"github.com/dbkbali/go-eth2-client/spec/deneb"
 	"github.com/pkg/errors"
 )
 

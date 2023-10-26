@@ -16,11 +16,11 @@ package spec
 import (
 	"errors"
 
-	"github.com/attestantio/go-eth2-client/spec/altair"
-	"github.com/attestantio/go-eth2-client/spec/bellatrix"
-	"github.com/attestantio/go-eth2-client/spec/capella"
-	"github.com/attestantio/go-eth2-client/spec/deneb"
-	"github.com/attestantio/go-eth2-client/spec/phase0"
+	"github.com/dbkbali/go-eth2-client/spec/altair"
+	"github.com/dbkbali/go-eth2-client/spec/bellatrix"
+	"github.com/dbkbali/go-eth2-client/spec/capella"
+	"github.com/dbkbali/go-eth2-client/spec/deneb"
+	"github.com/dbkbali/go-eth2-client/spec/phase0"
 )
 
 // VersionedSignedBeaconBlock contains a versioned signed beacon block.

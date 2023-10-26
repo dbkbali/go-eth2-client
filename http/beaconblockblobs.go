@@ -19,7 +19,7 @@ import (
 	"fmt"
 	"sort"
 
-	"github.com/attestantio/go-eth2-client/spec/deneb"
+	"github.com/dbkbali/go-eth2-client/spec/deneb"
 	"github.com/pkg/errors"
 )
 

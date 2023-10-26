@@ -16,8 +16,8 @@ package multi
 import (
 	"context"
 
-	consensusclient "github.com/attestantio/go-eth2-client"
-	"github.com/attestantio/go-eth2-client/spec/deneb"
+	consensusclient "github.com/dbkbali/go-eth2-client"
+	"github.com/dbkbali/go-eth2-client/spec/deneb"
 )
 
 // BeaconBlockBlobs fetches the blobs given a block ID.

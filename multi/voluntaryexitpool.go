@@ -16,8 +16,8 @@ package multi
 import (
 	"context"
 
-	consensusclient "github.com/attestantio/go-eth2-client"
-	"github.com/attestantio/go-eth2-client/spec/phase0"
+	consensusclient "github.com/dbkbali/go-eth2-client"
+	"github.com/dbkbali/go-eth2-client/spec/phase0"
 )
 
 // VoluntaryExitPool obtains the voluntary exit pool.
