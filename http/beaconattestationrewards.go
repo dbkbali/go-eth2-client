@@ -25,13 +25,13 @@ import (
 )
 
 type beaconAttestorRewardsJSON struct {
-	Data []*api.Validator `json:"data"`
+	Data []*api.BeaconAttestationRewards `json:"data"`
 }
 
 // BeaconAttestationRewards returns the attestation rewards for the given epoch.for
 // the designated validators
 // validatorIndices is a list of validators to restrict the returned values.  At least one validator must be provided for a result to be returned
-func (s *Service) BeaconAttestationRewards(ctx context.Context, requestEpoch phase0.Epoch, validatorIndices []phase0.ValidatorIndex) (map[phase0.ValidatorIndex]*api.Validator, error) {
+func (s *Service) BeaconAttestationRewards(ctx context.Context, requestEpoch phase0.Epoch, validatorIndices []phase0.ValidatorIndex) (map[phase0.ValidatorIndex]*api.BeaconAttestationRewards, error) {
 
 	url := fmt.Sprintf("/eth/v1/beacon/rewards/attestations/%d", requestEpoch)
 	if len(validatorIndices) != 0 {
@@ -44,23 +44,23 @@ func (s *Service) BeaconAttestationRewards(ctx context.Context, requestEpoch pha
 
 	respBodyReader, err := s.get(ctx, url)
 	if err != nil {
-		return nil, errors.Wrap(err, "failed to request validators")
+		return nil, errors.Wrap(err, "failed to request beacon attestation rewards")
 	}
 	if respBodyReader == nil {
-		return nil, errors.New("failed to obtain validators")
+		return nil, errors.New("failed to obtain beaconAttestorRewards")
 	}
 
 	var beaconAttestorRewardsJSON beaconAttestorRewardsJSON
 	if err := json.NewDecoder(respBodyReader).Decode(&beaconAttestorRewardsJSON); err != nil {
-		return nil, errors.Wrap(err, "failed to parse validators")
+		return nil, errors.Wrap(err, "failed to parse beacon attestation rewards")
 	}
 	if beaconAttestorRewardsJSON.Data == nil {
 		return nil, errors.New("no attestation rewards for validators returned")
 	}
 
-	res := make(map[phase0.ValidatorIndex]*api.Validator)
-	for _, validator := range validatorsJSON.Data {
-		res[validator.Index] = validator
+	res := make(map[phase0.ValidatorIndex]*api.BeaconAttestationRewards)
+	for _, beaconAttestationReward := range beaconAttestorRewardsJSON.Data {
+		res[beaconAttestationReward.Index] = beaconAttestationReward
 	}
 	return res, nil
 }
