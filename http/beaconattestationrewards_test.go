@@ -3,6 +3,7 @@ package http_test
 import (
 	"context"
 	"fmt"
+	"os"
 	"testing"
 
 	client "github.com/dbkbali/go-eth2-client"
@@ -14,7 +15,6 @@ import (
 func TestBeaconAttestationRewards(t *testing.T) {
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
-	t.Log("frereree")
 
 	tests := []struct {
 		name              string
@@ -24,22 +24,20 @@ func TestBeaconAttestationRewards(t *testing.T) {
 	}{
 		{
 			name:              "Good",
-			epoch:             21,
+			epoch:             238572,
 			expectedErrorCode: 0,
-			validatorIndices:  []phase0.ValidatorIndex{1},
+			validatorIndices:  []phase0.ValidatorIndex{512735},
 		},
 	}
 
 	service, err := http.New(ctx,
 		http.WithTimeout(timeout),
-		http.WithAddress("http://192.168.2.37:5052"),
+		http.WithAddress(os.Getenv("HTTP_ADDRESS")),
 	)
 	require.NoError(t, err)
-	t.Log("frereree")
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {
 			beaconAttestorRewards, err := service.(client.BeaconAttestationRewardsProvider).BeaconAttestationRewards(ctx, test.epoch, test.validatorIndices)
-			t.Logf("%v\n", beaconAttestorRewards)
 			if test.expectedErrorCode != 0 {
 				require.Contains(t, err.Error(), fmt.Sprintf("%d", test.expectedErrorCode))
 			} else {

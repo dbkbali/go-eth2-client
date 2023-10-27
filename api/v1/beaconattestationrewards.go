@@ -1,6 +1,7 @@
 package v1
 
 import (
+	"context"
 	"encoding/hex"
 	"encoding/json"
 	"fmt"
@@ -22,7 +23,7 @@ type BeaconAttestationRewards struct {
 	Total      phase0.Gwei
 }
 
-type BeaconAttestationRewardsJSON struct {
+type beaconAttestationRewardsJSON struct {
 	Index      string `json:"index"`
 	Pubkey     string `json:"pubkey"`
 	Epoch      string `json:"epoch"`
@@ -33,8 +34,8 @@ type BeaconAttestationRewardsJSON struct {
 	Total      string `json:"total"`
 }
 
-func (b *BeaconAttestationRewards) MarshalJSON() ([]byte, error) {
-	return json.Marshal(&BeaconAttestationRewardsJSON{
+func (b BeaconAttestationRewards) MarshalJSON() ([]byte, error) {
+	return json.Marshal(&beaconAttestationRewardsJSON{
 		Index:      fmt.Sprintf("%d", b.Index),
 		Pubkey:     fmt.Sprintf("%#x", b.Pubkey),
 		Epoch:      fmt.Sprintf("%d", b.Epoch),
@@ -47,14 +48,15 @@ func (b *BeaconAttestationRewards) MarshalJSON() ([]byte, error) {
 }
 
 func (b *BeaconAttestationRewards) UnmarshalJSON(input []byte) error {
-	var data BeaconAttestationRewardsJSON
+	var data beaconAttestationRewardsJSON
+	fmt.Printf("input: %s\n", input)
 	if err := json.Unmarshal(input, &data); err != nil {
 		return errors.Wrap(err, "invalid JSON")
 	}
 	return b.unpack(&data)
 }
 
-func (b *BeaconAttestationRewards) unpack(data *BeaconAttestationRewardsJSON) error {
+func (b *BeaconAttestationRewards) unpack(data *beaconAttestationRewardsJSON) error {
 
 	if data.Index == "" {
 		return errors.New("index missing")
@@ -126,4 +128,9 @@ func (b *BeaconAttestationRewards) String() string {
 		return fmt.Sprintf("ERR: %v", err)
 	}
 	return string(data)
+}
+
+// PubKey implements ValidatorPubKeyProvider.
+func (b *BeaconAttestationRewards) PubKey(_ context.Context) (phase0.BLSPubKey, error) {
+	return b.Pubkey, nil
 }
