@@ -22,7 +22,7 @@ import (
 )
 
 // Gwei is an amount in Gwei.
-type Gwei uint64
+type Gwei int64
 
 // UnmarshalJSON implements json.Unmarshaler.
 func (g *Gwei) UnmarshalJSON(input []byte) error {
