@@ -61,7 +61,7 @@ func (b *BeaconAttestationRewards) unpack(data *beaconAttestationRewardsJSON) er
 	if data.Index == "" {
 		return errors.New("index missing")
 	}
-	index, error := strconv.ParseUint(data.Index, 10, 64)
+	index, error := strconv.ParseInt(data.Index, 10, 64)
 	if error != nil {
 		return errors.Wrap(error, "invalid value for index")
 	}
@@ -82,37 +82,37 @@ func (b *BeaconAttestationRewards) unpack(data *beaconAttestationRewardsJSON) er
 	if data.Epoch == "" {
 		return errors.New("request epoch missing")
 	}
-	epoch, err := strconv.ParseUint(data.Epoch, 10, 64)
+	epoch, err := strconv.ParseInt(data.Epoch, 10, 64)
 	if err != nil {
 		return errors.Wrap(err, "invalid value for epoch")
 	}
 	b.Epoch = phase0.Epoch(epoch)
 
-	head, err := strconv.ParseUint(data.Head, 10, 64)
+	head, err := strconv.ParseInt(data.Head, 10, 64)
 	if err != nil {
 		return errors.Wrap(err, "invalid value for head reward")
 	}
 	b.Head = phase0.Gwei(head)
 
-	target, err := strconv.ParseUint(data.Target, 10, 64)
+	target, err := strconv.ParseInt(data.Target, 10, 64)
 	if err != nil {
 		return errors.Wrap(err, "invalid value for target reward")
 	}
 	b.Target = phase0.Gwei(target)
 
-	source, err := strconv.ParseUint(data.Source, 10, 64)
+	source, err := strconv.ParseInt(data.Source, 10, 64)
 	if err != nil {
 		return errors.Wrap(err, "invalid value for source reward")
 	}
 	b.Source = phase0.Gwei(source)
 
-	inactivity, err := strconv.ParseUint(data.Inactivity, 10, 64)
+	inactivity, err := strconv.ParseInt(data.Inactivity, 10, 64)
 	if err != nil {
 		return errors.Wrap(err, "invalid value for inactivity reward")
 	}
 	b.Inactivity = phase0.Gwei(inactivity)
 
-	total, err := strconv.ParseUint(data.Total, 10, 64)
+	total, err := strconv.ParseInt(data.Total, 10, 64)
 	if err != nil {
 		return errors.Wrap(err, "invalid value for total reward")
 	}

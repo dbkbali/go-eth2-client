@@ -24,7 +24,7 @@ func TestBeaconAttestationRewards(t *testing.T) {
 	}{
 		{
 			name:              "Good",
-			epoch:             238572,
+			epoch:             2,
 			expectedErrorCode: 0,
 			validatorIndices:  []phase0.ValidatorIndex{512735},
 		},
