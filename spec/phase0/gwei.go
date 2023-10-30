@@ -37,7 +37,7 @@ func (g *Gwei) UnmarshalJSON(input []byte) error {
 		return errors.New("invalid suffix")
 	}
 
-	val, err := strconv.ParseUint(string(input[1:len(input)-1]), 10, 64)
+	val, err := strconv.ParseInt(string(input[1:len(input)-1]), 10, 64)
 	if err != nil {
 		return errors.Wrapf(err, "invalid value %s", string(input[1:len(input)-1]))
 	}
